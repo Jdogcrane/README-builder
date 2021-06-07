@@ -2,112 +2,73 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const validate = function (value) {
+    if (value) {
+        return true
+    } else {
+        return 'Input field is empty please try again'
+    }
+}
+
+
 // creates prompts in terminal for the user to input data for the app to collect
 inquirer.prompt([
     {
         type: 'input',
         message: 'Project title:',
         name: 'title',
-
+        validate: validate
         // Prevents user from leaving input empty by checking value true
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        
     },
 
     {
         type: 'input',
         message: 'Description for the project:',
         name: 'description',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+       
     },
 
     {
         type: 'input',
         message: 'Installation instructions for the project:',
         name: 'installation',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
         type: 'input',
         message: 'Usage information for the project:',
         name: 'usage',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
         type: 'input',
         message: 'Contribution guidelines for the project:',
         name: 'contribution',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
         type: 'input',
         message: 'Test instructions for the project:',
         name: 'test',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
         type: 'input',
         message: 'Github Username:',
         name: 'user',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
         type: 'input',
         message: 'Email:',
         name: 'email',
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
 
     {
@@ -120,13 +81,7 @@ inquirer.prompt([
             "GNU GPL v3",
             "Eclipse"
         ],
-        validate: function (value) {
-            if (value) {
-                return true
-            } else {
-                return 'Input field is empty please try again'
-            }
-        }
+        validate: validate
     },
     // puts data from user inputs into function
 ]).then(function ({ title, description, installation, usage, contribution, test, user, email, license, }) {
@@ -137,15 +92,15 @@ inquirer.prompt([
     }
     if (license === 'ISC') {
         detail = `This application is covered by the ${license} license.`
-        license = '[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)'
+        license = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
     }
     if (license === "GNU GPL v3") {
         detail = `This application is covered by the ${license} license.`
-        license = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
+        license = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
     }
     if (license === "Eclipse") {
         detail = `This application is covered by the ${license} license.`
-        license = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
+        license = '[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)'
     };
     
     // basic template that gets filled dynamically based off user input
@@ -183,6 +138,7 @@ ${license} Click for more info. ${detail}
     createReadMe(template);
 }
 );
+
 // creates README with dynamic inputs based off users desires.
 function createReadMe(template) {
 
