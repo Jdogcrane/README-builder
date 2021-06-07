@@ -25,9 +25,9 @@ For this project my goal was to create a simple readme using Node.js & JavaScrip
 * Added function that prevents user from leaving input empty
 * Added prompts in terminal for the user to input data for the app to collect
 * Added function that collects data from each input
-* Added if statements that create license badge based depending on which one the user picks
+* Added if statements that create license badge depending on which one the user picks
 * Added basic template that gets filled dynamically based off user input
-* Added function that writes a new readme file using the new update template
+* Added function that writes a new readme file using the newly updated template
 
 >Notes: Did not try to do modules, but I plan on doing it in the future. Pretty happy with how it turned out tho :)
 
